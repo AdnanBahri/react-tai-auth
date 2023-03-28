@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthProvider";
-import Button from "../../components/ui/button";
-import { async } from "@firebase/util";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { useDark } from "../../contexts/ThemeProvider";
+
 const Home = () => {
+  const { mode, setMode } = useDark();
+
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { user, logOut } = useAuth();
@@ -23,6 +26,11 @@ const Home = () => {
       setLoading(false);
     }
   };
+
+  const toggleMode = useCallback(
+    () => setMode(mode === "dark" ? "light" : "dark"),
+    [mode]
+  );
 
   return (
     <div className="w-full h-screen flex items-center justify-center">
@@ -49,6 +57,12 @@ const Home = () => {
           </svg>
         )}{" "}
         Logout
+      </button>
+      <button
+        onClick={toggleMode}
+        className="absolute top-2 right-2 py-2 px-3 rounded-full text-slate-800 dark:text-gray-50"
+      >
+        {mode === "dark" ? <MdLightMode size={24} /> : <MdDarkMode size={24} />}
       </button>
     </div>
   );

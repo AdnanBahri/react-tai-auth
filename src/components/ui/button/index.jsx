@@ -6,7 +6,7 @@ const Button = ({ disabled, onClick, children }) => {
       type="submit"
       onClick={onClick}
       disabled={disabled}
-      className={` disabled:opacity-75 disabled:cursor-not-allowed inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700 cursor-pointer`}
+      className={` disabled:opacity-75 disabled:cursor-not-allowed inline-flex items-center justify-center w-full px-4 py-4 mt-6 text-base font-semibold text-white transition-all duration-200 bg-blue-600 dark:bg-blue-500 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700 cursor-pointer`}
     >
       {children}
     </button>
